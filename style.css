@@ -1,0 +1,128 @@
+/**
+ * Recurra - Main Stylesheet
+ * Desktop-first responsive design with explicit media queries
+ */
+
+/* Base Styles */
+body {
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Container for consistent max-width */
+.container {
+    max-width: 1200px;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #0C3C46;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dashboard mockup animation */
+.dashboard-mockup {
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Feature icons animation */
+.feature-icon {
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Step animation */
+.step-number {
+    transition: all 0.3s ease;
+}
+
+.step-item:hover .step-number {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3);
+}
+
+/* Slow spin for circular arrow */
+.animate-spin-slow {
+    animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    /* Tablet styles */
+    .hero-section .container {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    
+    .testimonial-carousel {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Small tablet styles */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 640px) {
+    /* Mobile styles */
+    .hero-section .container {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .steps-container {
+        flex-direction: column;
+    }
+    
+    .step-arrow {
+        transform: rotate(90deg);
+        margin: 20px 0;
+        display: block !important;
+    }
+    
+    .dashboard-preview .flex-col {
+        flex-direction: column-reverse;
+    }
+    
+    .client-logos {
+        gap: 20px;
+    }
+    
+    .cta-form input[type="text"] {
+        display: block;
+    }
+}
+
+/* Accessibility Focus Styles */
+button:focus, a:focus, input:focus {
+    outline: 2px solid #FF9F1C;
+    outline-offset: 2px;
+}
