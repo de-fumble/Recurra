@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recurra | Secure Payments Access</title>
+
+    <!-- site stylesheet + shared theme -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CDN (same setup as index.html) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Feather icons (already used in your page) -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'recurra-teal': '#0C3C46',
+              'recurra-orange': '#FF9F1C',
+              'recurra-gray': '#E0E0E0',
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+        /* local styles updated to use Recurra theme colors */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Use the exact teal from index.html */
+    --teal-primary: #0C3C46;     /* recurra-teal */
+    --teal-dark: #083033;
+    --charcoal: #2d3748;
+    --charcoal-light: #4a5568;
+    --accent: #FF9F1C;          /* recurra-orange */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+
+    /* use the site teal background and light text */
+    background-color: var(--teal-primary);
+    color: #F7FAFC; /* tailwind's gray-100 for good contrast */
+}
+
+/* optional subtle patterned overlay (keeps visual interest but stays on-brand) */
+.bg-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255,159,28,0.04) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(255,159,28,0.03) 0%, transparent 20%);
+    z-index: -1;
+}
+
+/* Card and elements keep white panel so content reads well on dark background */
+.auth-container {
+    background: transparent;
+}
+
+.auth-card {
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.25), 0 10px 10px -5px rgba(0,0,0,0.12);
+    transition: all 0.3s ease;
+    background: #ffffff; /* keep the auth card white for contrast */
+    color: var(--charcoal);
+}
+
+.auth-card:hover {
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.25);
+}
+
+/* Google button: keep brand G icon + a soft white button on teal bg */
+.google-btn {
+    background: #ffffff;
+    color: var(--charcoal);
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: all 0.16s ease;
+}
+
+.google-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(12,60,70,0.08);
+}
+
+/* Toggle options - highlight with brand orange or teal */
+.toggle-option.active {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* Logo container hover (keeps playful tilt) */
+.logo-container { transition: all 0.3s ease; }
+.logo-container:hover { transform: rotate(5deg); }
+
+/* Responsive tweaks preserved from original */
+@media (min-width: 1024px) {
+    .auth-container { min-height: 80vh; }
+}
+
+/* Accessibility Focus Styles */
+button:focus, a:focus, input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+    </style>
+</head>
+<body class="font-sans text-gray-100 bg-recurra-teal flex items-center justify-center p-4">
+    <div class="bg-pattern"></div>
+    
+    <div class="auth-container w-full max-w-6xl flex flex-col lg:flex-row bg-white rounded-2xl overflow-hidden">
+        <!-- Brand Section -->
+        <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-recurra-teal to-[#083033] p-12 flex-col justify-between text-white">
+            <div class="logo-container">
+                <img src="https://res.cloudinary.com/dmhy8rk7q/image/upload/v1761853878/Logo_with_Circular_Arrow_and__R___1_-removebg-preview_wu3ker.png"
+                     alt="Recurra Logo"
+                     class="w-32 h-auto">
+            </div>
+            
+            <div class="mt-8">
+                <h2 class="text-4xl font-bold text-white mb-4">Automate Your Recurring Payments</h2>
+                <p class="text-recurra-gray text-lg">
+                    Streamline institutional payments with our secure, automated platform designed for financial professionals.
+                </p>
+            </div>
+            
+            <div class="flex space-x-4 mt-8">
+                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                    <i data-feather="shield" class="text-recurra-teal"></i>
+                </div>
+                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                    <i data-feather="refresh-cw" class="text-recurra-teal"></i>
+                </div>
+                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                    <i data-feather="dollar-sign" class="text-recurra-teal"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Auth Section -->
+        <div class="w-full lg:w-1/2 p-8 md:p-12">
+            <div class="flex lg:hidden mb-6 w-full bg-gradient-to-br from-recurra-teal to-[#083033] p-4 rounded-lg items-center gap-3">
+                <img src="https://res.cloudinary.com/dmhy8rk7q/image/upload/v1761853878/Logo_with_Circular_Arrow_and__R___1_-removebg-preview_wu3ker.png"
+                     alt="Recurra Logo"
+                     class="w-10 h-10 flex-shrink-0">
+                <div class="leading-tight">
+                    <div class="text-white font-semibold text-sm">Recurra</div>
+                    <div class="text-recurra-gray text-xs">Automate recurring payments</div>
+                </div>
+            </div>
+            
+            <div class="auth-card bg-white rounded-xl p-8">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2" id="auth-title">Sign In</h1>
+                <p class="text-gray-500 mb-8">Secure access to your automated payments dashboard</p>
+                
+                <!-- Google Sign In Button -->
+                <button class="google-btn w-full flex items-center justify-center py-3 px-4 border border-gray-200 rounded-lg mb-6 hover:bg-gray-50">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google logo" class="w-5 h-5 mr-3">
+                    <span id="google-btn-text">Sign in with Google</span>
+                </button>
+                
+                <div class="flex items-center mb-6">
+                    <div class="flex-grow border-t border-gray-200"></div>
+                    <span class="mx-4 text-gray-400">OR</span>
+                    <div class="flex-grow border-t border-gray-200"></div>
+                </div>
+                
+                <!-- Email Form -->
+                <form id="auth-form">
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="mb-6" id="password-field">
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition" placeholder="••••••••" required>
+                    </div>
+                    
+                    <div class="mb-6 hidden" id="name-field">
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition" placeholder="John Doe">
+                    </div>
+                    
+                    <div class="mb-6 hidden" id="org-field">
+                        <label for="organization" class="block text-sm font-medium text-gray-700 mb-1">Organization</label>
+                        <input type="text" id="organization" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition" placeholder="Your Institution">
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-medium py-3 px-4 rounded-lg transition duration-200" id="submit-btn">
+                        Continue
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-gray-500">
+                        <span id="toggle-auth-text">Forgot Password?</span>
+                        <button id="toggle-auth" class="ml-1 text-teal-600 font-medium hover:text-teal-700 focus:outline-none">
+                            
+                        </button>
+                    </p>
+                </div>
+                
+                <!-- Account Type Toggle -->
+                <div class="mt-8">
+                    <p class="text-sm text-gray-500 mb-2 text-center">Account Type</p>
+                    <div class="flex justify-center">
+                        <div class="inline-flex bg-gray-100 rounded-lg p-1">
+                            <button class="toggle-option px-4 py-2 rounded-lg text-sm font-medium active" data-type="individual">
+                                Individual
+                            </button>
+                            <button class="toggle-option px-4 py-2 rounded-lg text-sm font-medium" data-type="institution">
+                                Institution
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center text-sm text-gray-500">
+                <p>By continuing, you agree to our <a href="#" class="text-teal-600 hover:underline">Terms</a> and <a href="#" class="text-teal-600 hover:underline">Privacy Policy</a>.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    feather.replace();
+
+    const toggleAuth = document.getElementById('toggle-auth');
+    const authTitle = document.getElementById('auth-title');
+    const googleBtnText = document.getElementById('google-btn-text');
+    const toggleAuthText = document.getElementById('toggle-auth-text');
+    const passwordField = document.getElementById('password-field');
+    const nameField = document.getElementById('name-field');
+    const orgField = document.getElementById('org-field');
+    const submitBtn = document.getElementById('submit-btn');
+    const authForm = document.getElementById('auth-form');
+    const toggleOptions = document.querySelectorAll('.toggle-option');
+
+    let isSignIn = true;
+    let accountType = 'individual';
+
+    function hideFormControls() {
+        if (authForm) authForm.classList.add('hidden');
+        if (submitBtn) submitBtn.classList.add('hidden');
+        // hide label/toggle text (we still keep the toggle button visible so user can switch Google sign-up/sign-in)
+    }
+
+    function showFormControls() {
+        if (authForm) authForm.classList.remove('hidden');
+        if (submitBtn) submitBtn.classList.remove('hidden');
+    }
+
+    // Update UI based on isSignIn and accountType
+    function updateUIForState() {
+        // Individual accounts: only Google (both sign in and sign up)
+        if (accountType === 'individual') {
+            // Keep toggle visible so users can switch "Sign in" / "Sign up" context for the Google button
+            if (toggleAuth) toggleAuth.classList.remove('hidden');
+
+            // Hide email/password form and submission controls
+            hideFormControls();
+
+            // Title and Google button text reflect current auth mode
+            authTitle.textContent = isSignIn ? 'Sign In' : 'Sign Up';
+            googleBtnText.textContent = isSignIn ? 'Sign in with Google' : 'Sign up with Google';
+
+            // Guidance text
+            if (toggleAuthText) {
+                toggleAuthText.textContent = isSignIn ? "Use Google to sign in" : "Use Google to sign up";
+            }
+
+            // Ensure name/org/password inputs are hidden
+            [nameField, orgField, passwordField].forEach(el => {
+                if (el) el.classList.add('hidden');
+            });
+        } else {
+            // Institution accounts: show full email/password flows
+            showFormControls();
+            if (toggleAuth) toggleAuth.classList.remove('hidden');
+
+            // Title, toggle text and google button depend on isSignIn
+            if (isSignIn) {
+                authTitle.textContent = 'Sign In';
+                googleBtnText.textContent = 'Sign in with Google';
+                if (toggleAuthText) toggleAuthText.textContent = "Don't have an account?";
+                if (toggleAuth) toggleAuth.textContent = 'Sign up';
+
+                if (passwordField) passwordField.classList.remove('hidden');
+                if (nameField) nameField.classList.add('hidden');
+                if (orgField) orgField.classList.add('hidden');
+                if (submitBtn) submitBtn.textContent = 'Continue';
+            } else {
+                authTitle.textContent = 'Sign Up';
+                googleBtnText.textContent = 'Sign up with Google';
+                if (toggleAuthText) toggleAuthText.textContent = "Already have an account?";
+                if (toggleAuth) toggleAuth.textContent = 'Sign in';
+
+                if (passwordField) passwordField.classList.remove('hidden');
+                if (nameField) nameField.classList.remove('hidden');
+                // show org field only for institution on sign up
+                if (orgField) orgField.classList.remove('hidden');
+
+                if (submitBtn) submitBtn.textContent = 'Create Account';
+            }
+        }
+    }
+
+    // User clicked the Sign in / Sign up toggle
+    toggleAuth.addEventListener('click', function() {
+        // Toggle the mode (both account types can toggle)
+        isSignIn = !isSignIn;
+        updateUIForState();
+    });
+
+    // Account type buttons
+    toggleOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            toggleOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+
+            accountType = this.dataset.type;
+            // When switching account type, we may want to reset mode to Sign In by default
+            // but preserve the user's current choice — here we keep current isSignIn
+            updateUIForState();
+        });
+    });
+
+    // Form submission: only allowed for institutions
+    authForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (accountType === 'individual') {
+            alert('Individual accounts must use Google sign-in/sign-up.');
+            return;
+        }
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (isSignIn) {
+            // Institution sign-in with email/password
+            console.log('Institution sign-in with:', email);
+            alert('Institution email sign-in would be handled here.');
+        } else {
+            // Institution sign-up
+            const name = document.getElementById('name').value;
+            const organization = document.getElementById('organization').value || '';
+            console.log('Institution sign-up:', email, name, organization);
+            alert('Institution sign-up would be handled here.');
+        }
+    });
+
+    // Google button click (works for both account types and both modes)
+    document.querySelector('.google-btn').addEventListener('click', function() {
+        const action = isSignIn ? 'sign in' : 'sign up';
+        console.log(`Google ${action} requested`);
+
+        if (typeof window.signInWithGoogle === 'function') {
+            window.signInWithGoogle()
+              .then(() => {
+                // onAuthStateChanged in firebase-init.js will redirect to dashboard.html
+                console.log('Google auth completed');
+              })
+              .catch(err => {
+                console.error('Google auth failed', err);
+                alert('Google sign-in failed. See console for details.');
+              });
+        } else {
+            alert('Authentication not available yet. Please try again in a moment.');
+        }
+    });
+
+    // initial UI render
+    updateUIForState();
+});
+    </script>
+    <script type="module" src="./firebase-init.js"></script>
+</body>
+</html>

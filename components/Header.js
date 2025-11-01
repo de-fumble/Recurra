@@ -146,7 +146,7 @@ class CustomHeader extends HTMLElement {
         <div class="container">
           <nav class="nav-container">
             <a href="/" class="logo">
-              <img src="https://res.cloudinary.com/dmhy8rk7q/image/upload/v1761853878/Logo_with_Circular_Arrow_and__R___1_-removebg-preview_wu3ker.png" alt="Recurra Logo" class="logo" height="70" width="auto">
+              <img src="https://res.cloudinary.com/dmhy8rk7/image/upload/v1761853878/Logo_with_Circular_Arrow_and__R___1_-removebg-preview_wu3ker.png" alt="Recurra Logo" class="logo" height="70" width="auto">
             </a>
             
             <div class="nav-links">
@@ -157,12 +157,15 @@ class CustomHeader extends HTMLElement {
               <a href="#contact">Contact</a>
               
             </div>
+
+            <!-- desktop CTA -->
+            <button class="cta-button desktop" id="sign-in-btn">Sign Up / Sign In</button>
             
             <button class="mobile-menu-btn" id="mobile-menu-btn">
               <i data-feather="menu"></i>
             </button>
             
-            <button class="cta-button mobile hidden">Get Started</button>
+            <button class="cta-button mobile hidden" id="sign-in-btn-mobile">Sign Up / Sign In</button>
           </nav>
         </div>
         
@@ -174,13 +177,13 @@ class CustomHeader extends HTMLElement {
               <a href="#pricing">Pricing</a>
               <a href="#resources">Resources</a>
               <a href="#contact">Contact</a>
-              <button class="cta-button">Get Started</button>
+              <button class="cta-button" id="mobile-get-started">Get Started</button>
             </div>
           </div>
         </div>
       </header>
     `;
-    
+
     // Initialize mobile menu toggle
     const mobileMenuBtn = this.shadowRoot.getElementById('mobile-menu-btn');
     const mobileMenu = this.shadowRoot.getElementById('mobile-menu');
@@ -189,6 +192,18 @@ class CustomHeader extends HTMLElement {
       mobileMenu.classList.toggle('active');
       feather.replace();
     });
+
+    // Sign-in button handlers (calls the global function exposed by firebase-init.js)
+    const signInBtn = this.shadowRoot.getElementById('sign-in-btn');
+    const signInBtnMobile = this.shadowRoot.getElementById('sign-in-btn-mobile');
+
+    const goToSignPage = () => {
+      // navigate to the sign-in page in the same tab
+      window.location.href = 'sign.html';
+    };
+
+    if (signInBtn) signInBtn.addEventListener('click', goToSignPage);
+    if (signInBtnMobile) signInBtnMobile.addEventListener('click', goToSignPage);
     
     // Handle header scroll effect
     const header = this.shadowRoot.getElementById('main-header');

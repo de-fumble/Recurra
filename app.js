@@ -1,3 +1,5 @@
+import './firebase-init.js';
+
 /**
  * Recurra - Main JavaScript
  * Handles mobile menu, animations, and interactive elements
