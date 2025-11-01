@@ -52,13 +52,25 @@
                 </div>
                 <div class="md:w-1/2 relative">
                     <div class="dashboard-mockup">
-                        <img src="https://res.cloudinary.com/dmhy8rk7q/image/upload/v1761908676/OVERVIEW__1_-removebg_nxpxmm.png" alt="Recurra dashboard preview"
-                             class="rounded-lg w-full h-auto"
-                             style="border-radius:12px; box-shadow:
-                                    0 6px 18px rgba(12,60,70,0.12),
-                                    0 0 18px rgba(255,159,28,0.08),
-                                    0 0 40px rgba(255,159,28,0.12);
-                                    transition: box-shadow 200ms ease-in-out;">
+                        <!-- Inline SVG for dashboard mockup -->
+                        <svg viewBox="0 0 600 400" class="w-full h-auto">
+                            <!-- Background card -->
+                            <rect x="0" y="0" width="550" height="350" rx="20" fill="#1A4A54" class="shadow-xl"/>
+                            
+                            <!-- Dashboard elements -->
+                            <rect x="30" y="30" width="490" height="80" rx="10" fill="#0C3C46"/>
+                            <circle cx="100" cy="70" r="20" fill="#FF9F1C"/>
+                            <rect x="140" y="50" width="200" height="15" rx="5" fill="#E0E0E0"/>
+                            <rect x="140" y="75" width="150" height="10" rx="5" fill="#E0E0E0" opacity="0.6"/>
+                            
+                            <!-- Chart area -->
+                            <rect x="30" y="130" width="240" height="180" rx="10" fill="#0C3C46"/>
+                            <rect x="280" y="130" width="240" height="180" rx="10" fill="#0C3C46"/>
+                            
+                            <!-- Circular arrow motif -->
+                            <path d="M450 100 A50 50 0 1 1 450 200" fill="none" stroke="#FF9F1C" stroke-width="8" stroke-linecap="round" class="animate-spin-slow"/>
+                            <polygon points="445,195 455,195 450,210" fill="#FF9F1C"/>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -154,10 +166,10 @@
     <section class="dashboard-preview bg-white text-recurra-teal py-20">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row items-center">
-                <div class="xl:w-1/2 mb-12 xl:mb-0">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
                     <!-- Dashboard screenshot mock -->
-                    <div class="dashboard-image bg-gray-100 rounded-xl p-2 shadow-lg">
-                        <img src="https://res.cloudinary.com/dmhy8rk7q/image/upload/v1761908676/OVERVIEW__1_-removebg_nxpxmm.png" alt="Recurra dashboard preview" class="rounded-lg w-full h-auto glow-border">
+                    <div class="dashboard-image bg-gray-100 rounded-xl p-4 shadow-lg">
+                        <img src="http://static.photos/technology/640x360/1" alt="Recurra dashboard preview" class="rounded-lg w-full h-auto">
                     </div>
                 </div>
                 <div class="lg:w-1/2 lg:pl-12">
@@ -192,19 +204,19 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing bg-gray-50 py-20 text-recurra-teal">
+    <section class="pricing bg-gray-50 py-20">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Simple, Transparent Pricing</h2>
-            <p class="text-lg text-center text-recurra-teal mb-16 max-w-2xl mx-auto">Choose the plan that fits your institution's needs.</p>
+            <p class="text-lg text-center text-gray-600 mb-16 max-w-2xl mx-auto">Choose the plan that fits your institution's needs.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Basic Plan -->
                 <div class="pricing-card bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition duration-300">
                     <h3 class="text-2xl font-bold mb-2">Basic</h3>
-                    <p class="text-recurra-teal mb-6">Perfect for small organizations</p>
+                    <p class="text-gray-600 mb-6">Perfect for small organizations</p>
                     <div class="price mb-6">
                         <span class="text-4xl font-bold">$49</span>
-                        <span class="text-recurra-teal">/month</span>
+                        <span class="text-gray-500">/month</span>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-start">
@@ -231,10 +243,10 @@
                         POPULAR
                     </div>
                     <h3 class="text-2xl font-bold mb-2">Pro</h3>
-                    <p class="text-recurra-teal mb-6">Best for growing institutions</p>
+                    <p class="text-gray-600 mb-6">Best for growing institutions</p>
                     <div class="price mb-6">
                         <span class="text-4xl font-bold">$149</span>
-                        <span class="text-recurra-teal">/month</span>
+                        <span class="text-gray-500">/month</span>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-start">
@@ -262,7 +274,7 @@
                 <!-- Enterprise Plan -->
                 <div class="pricing-card bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition duration-300">
                     <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-                    <p class="text-recurra-teal mb-6">For large organizations</p>
+                    <p class="text-gray-600 mb-6">For large organizations</p>
                     <div class="price mb-6">
                         <span class="text-4xl font-bold">Custom</span>
                     </div>
@@ -353,9 +365,9 @@
     <custom-footer></custom-footer>
 
     <!-- Scripts -->
-    <script src="../components/Header.js"></script>
+    <script src="components/header.js"></script>
     <script src="components/footer.js"></script>
-    <script type="module" src="app.js"></script>
+    <script src="app.js"></script>
     <script>
         feather.replace();
     </script>
