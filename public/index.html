@@ -1,89 +1,363 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.5.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.5.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.5.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recurra - Automated recurring payments platform for schools, churches, and cooperatives">
+    <meta property="og:title" content="Recurra | Automated Recurring Payments">
+    <meta property="og:description" content="White-label recurring payments automation for institutions">
+    <meta property="og:type" content="website">
+    <title>Recurra | Automated Recurring Payments</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'recurra-teal': '#0C3C46',
+              'recurra-orange': '#FF9F1C',
+              'recurra-gray': '#E0E0E0',
+            }
+          }
         }
-      });
+      }
     </script>
-  </body>
+</head>
+<body class="font-sans text-gray-100 bg-recurra-teal">
+    <!-- Header/Navigation -->
+    <custom-header></custom-header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container mx-auto px-6 py-20 md:py-32">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Automate Your Collections with Recurra
+                    </h1>
+                    <p class="text-xl md:text-2xl text-recurra-gray mb-8">
+                        Smart recurring payments for schools, churches, and cooperatives.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#" class="bg-recurra-orange hover:bg-opacity-90 text-white font-bold py-4 px-8 rounded-lg text-center transition duration-300">
+                            Start Now
+                        </a>
+                        <a href="#" class="border border-white hover:bg-white hover:bg-opacity-10 text-white font-bold py-4 px-8 rounded-lg text-center transition duration-300">
+                            Request Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="dashboard-mockup">
+                        <img src="https://res.cloudinary.com/dmhy8rk7q/image/upload/v1761908676/OVERVIEW__1_-removebg_nxpxmm.png" alt="Recurra dashboard preview"
+                             class="rounded-lg w-full h-auto"
+                             style="border-radius:12px; box-shadow:
+                                    0 6px 18px rgba(12,60,70,0.12),
+                                    0 0 18px rgba(255,159,28,0.08),
+                                    0 0 40px rgba(255,159,28,0.12);
+                                    transition: box-shadow 200ms ease-in-out;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section bg-white text-recurra-teal py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Powerful Features for Your Institution</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card p-6 rounded-xl transition duration-300 hover:shadow-lg">
+                    <div class="feature-icon w-16 h-16 rounded-full bg-recurra-orange bg-opacity-20 flex items-center justify-center mb-4">
+                        <i data-feather="check-circle" class="text-recurra-orange"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Zero Missed Payments</h3>
+                    <p class="text-gray-600">Automated reminders and retries ensure consistent cash flow.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card p-6 rounded-xl transition duration-300 hover:shadow-lg">
+                    <div class="feature-icon w-16 h-16 rounded-full bg-recurra-orange bg-opacity-20 flex items-center justify-center mb-4">
+                        <i data-feather="zap" class="text-recurra-orange"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Instant Payouts</h3>
+                    <p class="text-gray-600">Funds are available immediately with our fast settlement.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card p-6 rounded-xl transition duration-300 hover:shadow-lg">
+                    <div class="feature-icon w-16 h-16 rounded-full bg-recurra-orange bg-opacity-20 flex items-center justify-center mb-4">
+                        <i data-feather="bar-chart-2" class="text-recurra-orange"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Analytics Dashboard</h3>
+                    <p class="text-gray-600">Real-time insights into your recurring revenue and collections.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card p-6 rounded-xl transition duration-300 hover:shadow-lg">
+                    <div class="feature-icon w-16 h-16 rounded-full bg-recurra-orange bg-opacity-20 flex items-center justify-center mb-4">
+                        <i data-feather="edit" class="text-recurra-orange"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">White-label Customization</h3>
+                    <p class="text-gray-600">Brand the platform as your own with custom colors and logos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works bg-recurra-teal text-white py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">How Recurra Works</h2>
+            
+            <div class="steps-container flex flex-col md:flex-row items-center justify-between">
+                <!-- Step 1 -->
+                <div class="step-item mb-12 md:mb-0 flex flex-col items-center text-center">
+                    <div class="step-number w-16 h-16 rounded-full bg-recurra-orange flex items-center justify-center text-2xl font-bold mb-4">1</div>
+                    <h3 class="text-xl font-bold mb-2">Create Plan</h3>
+                    <p class="text-recurra-gray max-w-xs">Set up your payment schedules and amounts.</p>
+                </div>
+                
+                <!-- Arrow (desktop only) -->
+                <div class="hidden md:block step-arrow text-recurra-orange mx-4">
+                    <i data-feather="arrow-right" class="w-12 h-12"></i>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step-item mb-12 md:mb-0 flex flex-col items-center text-center">
+                    <div class="step-number w-16 h-16 rounded-full bg-recurra-orange flex items-center justify-center text-2xl font-bold mb-4">2</div>
+                    <h3 class="text-xl font-bold mb-2">Add Members</h3>
+                    <p class="text-recurra-gray max-w-xs">Import or invite members to your payment plan.</p>
+                </div>
+                
+                <!-- Arrow (desktop only) -->
+                <div class="hidden md:block step-arrow text-recurra-orange mx-4">
+                    <i data-feather="arrow-right" class="w-12 h-12"></i>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="step-item flex flex-col items-center text-center">
+                    <div class="step-number w-16 h-16 rounded-full bg-recurra-orange flex items-center justify-center text-2xl font-bold mb-4">3</div>
+                    <h3 class="text-xl font-bold mb-2">Collect Automatically</h3>
+                    <p class="text-recurra-gray max-w-xs">Sit back while we handle the payments for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <section class="dashboard-preview bg-white text-recurra-teal py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="xl:w-1/2 mb-12 xl:mb-0">
+                    <!-- Dashboard screenshot mock -->
+                    <div class="dashboard-image bg-gray-100 rounded-xl p-2 shadow-lg">
+                        <img src="https://res.cloudinary.com/dmhy8rk7q/image/upload/v1761908676/OVERVIEW__1_-removebg_nxpxmm.png" alt="Recurra dashboard preview" class="rounded-lg w-full h-auto glow-border">
+                    </div>
+                </div>
+                <div class="lg:w-1/2 lg:pl-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Real-time Institution Dashboard</h2>
+                    <p class="text-lg text-gray-600 mb-8">Monitor your recurring revenue and payment performance with our intuitive dashboard.</p>
+                    
+                    <div class="metrics-grid grid grid-cols-2 gap-4 mb-8">
+                        <div class="metric-chip bg-recurra-teal bg-opacity-10 p-4 rounded-lg">
+                            <h3 class="font-bold text-recurra-orange">98%</h3>
+                            <p class="text-sm">Collection Rate</p>
+                        </div>
+                        <div class="metric-chip bg-recurra-teal bg-opacity-10 p-4 rounded-lg">
+                            <h3 class="font-bold text-recurra-orange">24h</h3>
+                            <p class="text-sm">Payout Speed</p>
+                        </div>
+                        <div class="metric-chip bg-recurra-teal bg-opacity-10 p-4 rounded-lg">
+                            <h3 class="font-bold text-recurra-orange">100+</h3>
+                            <p class="text-sm">Integrations</p>
+                        </div>
+                        <div class="metric-chip bg-recurra-teal bg-opacity-10 p-4 rounded-lg">
+                            <h3 class="font-bold text-recurra-orange">99.9%</h3>
+                            <p class="text-sm">Uptime SLA</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="inline-block bg-recurra-orange hover:bg-opacity-90 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                        See All Features
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing bg-gray-50 py-20 text-recurra-teal">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Simple, Transparent Pricing</h2>
+            <p class="text-lg text-center text-recurra-teal mb-16 max-w-2xl mx-auto">Choose the plan that fits your institution's needs.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="pricing-card bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition duration-300">
+                    <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                    <p class="text-recurra-teal mb-6">Perfect for small organizations</p>
+                    <div class="price mb-6">
+                        <span class="text-4xl font-bold">$49</span>
+                        <span class="text-recurra-teal">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>1,000 transactions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>Basic analytics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>Email support</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="block w-full text-center border border-recurra-orange text-recurra-orange hover:bg-recurra-orange hover:text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Pro Plan (Featured) -->
+                <div class="pricing-card bg-white p-8 rounded-xl shadow-lg border-2 border-recurra-orange relative">
+                    <div class="absolute top-0 right-0 bg-recurra-orange text-white text-xs font-bold px-3 py-1 rounded-bl rounded-tr">
+                        POPULAR
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                    <p class="text-recurra-teal mb-6">Best for growing institutions</p>
+                    <div class="price mb-6">
+                        <span class="text-4xl font-bold">$149</span>
+                        <span class="text-recurra-teal">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>5,000 transactions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>Advanced analytics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>Priority support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>Custom branding</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="block w-full text-center bg-recurra-orange hover:bg-opacity-90 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="pricing-card bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition duration-300">
+                    <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-recurra-teal mb-6">For large organizations</p>
+                    <div class="price mb-6">
+                        <span class="text-4xl font-bold">Custom</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>Unlimited transactions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>Premium analytics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>24/7 support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-recurra-orange mr-2 mt-1"></i>
+                            <span>API access</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="block w-full text-center border border-recurra-orange text-recurra-orange hover:bg-recurra-orange hover:text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials bg-white py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Trusted by Leading Institutions</h2>
+            
+            <div class="client-logos flex flex-wrap justify-center gap-8 mb-16">
+                <img src="http://static.photos/education/200x200/1" alt="Client Logo" class="h-12 w-auto opacity-70 hover:opacity-100 transition duration-300">
+                <img src="http://static.photos/education/200x200/2" alt="Client Logo" class="h-12 w-auto opacity-70 hover:opacity-100 transition duration-300">
+                <img src="http://static.photos/education/200x200/3" alt="Client Logo" class="h-12 w-auto opacity-70 hover:opacity-100 transition duration-300">
+                <img src="http://static.photos/education/200x200/4" alt="Client Logo" class="h-12 w-auto opacity-70 hover:opacity-100 transition duration-300">
+                <img src="http://static.photos/education/200x200/5" alt="Client Logo" class="h-12 w-auto opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            
+            <div class="testimonial-carousel relative">
+                <!-- Single testimonial for demo (would be a carousel in production) -->
+                <div class="testimonial bg-recurra-teal bg-opacity-5 p-8 rounded-xl max-w-4xl mx-auto">
+                    <div class="flex items-start mb-6">
+                        <img src="http://static.photos/people/80x80/1" alt="Testimonial author" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-lg">Dr. Sarah Johnson</h4>
+                            <p class="text-gray-600">Head of Finance, Greenfield University</p>
+                        </div>
+                    </div>
+                    <p class="text-lg italic text-gray-700 mb-6">
+                        "Recurra has transformed our tuition collection process. We've seen a 30% reduction in late payments and saved countless admin hours with their automated reminders and payment tracking."
+                    </p>
+                    <div class="flex space-x-1 text-recurra-orange">
+                        <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                        <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                        <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                        <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                        <i data-feather="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta bg-recurra-teal py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Automate Your Recurring Payments?</h2>
+            <p class="text-xl text-recurra-gray mb-8 max-w-2xl mx-auto">Join thousands of institutions streamlining their collections with Recurra.</p>
+            
+            <div class="cta-form max-w-lg mx-auto">
+                <form class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-recurra-orange text-gray-900">
+                    <input type="text" placeholder="Organization name" class="flex-grow px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-recurra-orange text-gray-900 sm:hidden">
+                    <button type="submit" class="bg-recurra-orange hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                        Get Started
+                    </button>
+                </form>
+                <p class="text-sm text-recurra-gray mt-4">No credit card required. Free 14-day trial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <custom-footer></custom-footer>
+
+    <!-- Scripts -->
+    <script src="components/header.js"></script>
+    <script src="components/footer.js"></script>
+    <script type="module" src="app.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
 </html>
