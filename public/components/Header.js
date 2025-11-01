@@ -146,7 +146,7 @@ class CustomHeader extends HTMLElement {
         <div class="container">
           <nav class="nav-container">
             <a href="/" class="logo">
-              <img src="https://res.cloudinary.com/dmhy8rk7/image/upload/v1761853878/Logo_with_Circular_Arrow_and__R___1_-removebg-preview_wu3ker.png" alt="Recurra Logo" class="logo" height="70" width="auto">
+              <img src="https://res.cloudinary.com/dmhy8rk7q/image/upload/v1761853878/Logo_with_Circular_Arrow_and__R___1_-removebg-preview_wu3ker.png" alt="Recurra Logo" class="logo" height="70" width="auto">
             </a>
             
             <div class="nav-links">
@@ -159,7 +159,7 @@ class CustomHeader extends HTMLElement {
             </div>
 
             <!-- desktop CTA -->
-            <button class="cta-button desktop" id="sign-in-btn">Sign Up / Sign In</button>
+          
             
             <button class="mobile-menu-btn" id="mobile-menu-btn">
               <i data-feather="menu"></i>
